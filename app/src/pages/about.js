@@ -1,22 +1,25 @@
 import React from "react"
-import { Link } from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import Header from "../components/header"
 
-export default function About() {
+export default function About({ data }) {
   return (
     <Layout>
-    <div style={{ color: `teal` }}>
-      <Header headerText="About Gatsby" />
-      <Header headerText="It's pretty cool" />
-      <p>Such wow. Very React.</p>
-      <div>
-      <h1>About me</h1>
+      <h1>About {data.site.siteMetadata.title}</h1>
       <p>
-        I’m good enough, I’m smart enough, and gosh darn it, people like me!
+        We're the only site running on your computer dedicated to showing the
+        best photos and videos of pandas eating lots of food.
       </p>
-    </div>
-    </div>
     </Layout>
   )
 }
+
+export const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`
