@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 
 export default function MyFiles({ data }) {
-  console.log(data)
+  console.log('data',data)
   return (
     <Layout>
       <div>
@@ -33,9 +33,10 @@ export default function MyFiles({ data }) {
   )
 }
 
+
 export const query = graphql`
   query {
-    allFile {
+    allFile (sort: { fields: [relativePath], order: DESC }){
       edges {
         node {
           relativePath
